@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-09-17T13:36:21.085727+00:00",
+  "revision": 2,
+  "status": "passed",
+  "schema": "ouroboros.core.seed.Seed",
+  "package_version": "0.51.7",
+  "acceptance_criteria": 10,
+  "ontology_fields": 5,
+  "unresolved_slots": [],
+  "prior_revision_snapshot_hashes": "verified",
+  "source_artifacts": [
+    {
+      "path": "seed.yaml",
+      "sha256": "5e28a65df19ef3d0959d669353a272fef76fa507cceba7bb01713acf76bdd4f5",
+      "bytes": 10916
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "189e42118640734bc21540b24842806efb76a6d32c542c42235817bec74ca2d9",
+      "bytes": 15934
+    }
+  ],
+  "mechanical_correction": "Quoted provenance.revised_at as a string for JSON-serializable Seed extras; no requirement changed.",
+  "runtime_test_status": "not_run_specification_only"
+}

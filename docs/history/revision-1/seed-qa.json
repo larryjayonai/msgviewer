@@ -1,0 +1,14 @@
+{
+  "score": 0.97,
+  "verdict": "pass",
+  "dimensions": {
+    "correctness": 0.98,
+    "completeness": 0.97,
+    "quality": 0.96,
+    "intent_alignment": 0.98,
+    "domain_specific": 0.97
+  },
+  "differences": [],
+  "suggestions": [],
+  "reasoning": "사용자가 승인한 플랫폼·단일 EXE·오프라인 배포·본문 표현·선택과 복사·첨부 저장·임시자원 정리 요구를 보존한다. 7~8MB를 목표로 취급하고 속도를 RAM 절약보다 우선하며, 임의의 시간 SLA나 메모리 상한을 추가하지 않았다. 수락 기준은 관찰 가능한 동작과 측정 결과를 중심으로 작성됐고, 상세 검증 계획은 실패·취소·비정상 종료와 미검증 환경의 처리까지 구분한다. 전달받은 설치 Seed 모델 검증 결과도 통과했다. 명세 QA와 앱 구현·실행 검증을 명확히 구별하며 MCP 평가 근거를 만들어내지 않았다."
+}

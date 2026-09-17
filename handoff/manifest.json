@@ -1,0 +1,217 @@
+{
+  "format_version": 1,
+  "recorded_at_utc": "2026-09-17T14:14:14.649662+00:00",
+  "archive_root": "msgviewer/",
+  "algorithm": "SHA-256",
+  "exclusions": [
+    ".git/",
+    "handoff/manifest.json (self-hash excluded)",
+    "handoff/*.zip",
+    "handoff/*.sha256",
+    "handoff/bundle-info.json",
+    "Global configurations and credentials outside this workspace"
+  ],
+  "file_count": 40,
+  "files": [
+    {
+      "path": "ANTIGRAVITY_HANDOFF.md",
+      "bytes": 10785,
+      "sha256": "d8226b0a0f6693e5c6142fac2da3399169b2da6c95765b12620ff2170da0f9d9"
+    },
+    {
+      "path": "ANTIGRAVITY_PROMPT.txt",
+      "bytes": 1989,
+      "sha256": "51d130bdeb9f6f66f67786fcfe7c08139c7eb91d29d46af11754d58b642459e1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1594,
+      "sha256": "570fe86e96b38840b42dc5612844d6ecfaed53bc0889fca2786fc65e1bb69dc9"
+    },
+    {
+      "path": "SPEC.md",
+      "bytes": 25151,
+      "sha256": "e705ec684e1a91aba3d865662607dfbf108822f5008ade9a3d911e3c12936230"
+    },
+    {
+      "path": "Start-Antigravity.ps1",
+      "bytes": 1387,
+      "sha256": "1f49e647cb6d34bfb91d03cc6823e972c9ee1e7d6ef010b45d597c8f9f62e104"
+    },
+    {
+      "path": "docs/evaluation-mechanical.json",
+      "bytes": 2693,
+      "sha256": "feeedc4e738bba5ac673c228d089a3a2f783db0e2043e5ab9a2a59bb5a9da426"
+    },
+    {
+      "path": "docs/evaluation.md",
+      "bytes": 6011,
+      "sha256": "904c428c5981be22d3c8d3a1d0f674ecefaad9be3724f477c810dbd317713b41"
+    },
+    {
+      "path": "docs/history/revision-1/SPEC.md",
+      "bytes": 11215,
+      "sha256": "e2f53289fcd82737c494b0b55be3f873aa9389518a9097c63e38fef33a1f3781"
+    },
+    {
+      "path": "docs/history/revision-1/evaluation-mechanical.json",
+      "bytes": 2511,
+      "sha256": "edc1cba99e11ce3c37ff38b70ce6d5296b344087f000c356cde007456a735152"
+    },
+    {
+      "path": "docs/history/revision-1/evaluation.md",
+      "bytes": 5580,
+      "sha256": "56b1ad4e9d3d98b1d821108c117d8c406cc38da77e91d26a823cf10f0d6bb543"
+    },
+    {
+      "path": "docs/history/revision-1/seed-audit.json",
+      "bytes": 1548,
+      "sha256": "2a49db91f178721f67f8dc5db551c66283f6004c706483aa348ae5cee12c650a"
+    },
+    {
+      "path": "docs/history/revision-1/seed-qa.json",
+      "bytes": 925,
+      "sha256": "866757b894093128b601d97b4406fb558d0757142be45c02abb0ef0cb576a4c5"
+    },
+    {
+      "path": "docs/history/revision-1/seed.yaml",
+      "bytes": 7865,
+      "sha256": "f6e7e7bb0d59b5ad413a224f26de145cc89b7a52dd2864c5f08f04d234e2efa4"
+    },
+    {
+      "path": "docs/history/revision-2/SPEC.md",
+      "bytes": 15934,
+      "sha256": "189e42118640734bc21540b24842806efb76a6d32c542c42235817bec74ca2d9"
+    },
+    {
+      "path": "docs/history/revision-2/revision-2.md",
+      "bytes": 3241,
+      "sha256": "35c4e03004f44386e2aa9b336c92d1fa13d950e9a618f5ead9f861f26723c8c3"
+    },
+    {
+      "path": "docs/history/revision-2/seed-audit.json",
+      "bytes": 2034,
+      "sha256": "ce09c70747e5e04486c719f1fe1eccda47e3199f4f4d4108a6caf321b78deea7"
+    },
+    {
+      "path": "docs/history/revision-2/seed-mechanical.json",
+      "bytes": 818,
+      "sha256": "ded4f5160ba7d1923cdc4d1db59348f6b1a7d29b428cd84d81d96b0e671c3583"
+    },
+    {
+      "path": "docs/history/revision-2/seed-qa.json",
+      "bytes": 1384,
+      "sha256": "43daacdc89f8989fdd2829cb325cc0fa92d9e728dfde7fa68dda38d93a0a5cbb"
+    },
+    {
+      "path": "docs/history/revision-2/seed.yaml",
+      "bytes": 10916,
+      "sha256": "5e28a65df19ef3d0959d669353a272fef76fa507cceba7bb01713acf76bdd4f5"
+    },
+    {
+      "path": "docs/history/revision-3/SPEC.md",
+      "bytes": 19765,
+      "sha256": "4f795fd49aac41a05a74d55a0741c2bc5b0d5589a44be36e02729a33e8702a10"
+    },
+    {
+      "path": "docs/history/revision-3/revision-3.md",
+      "bytes": 3158,
+      "sha256": "3f2e0cd128858de3352402dc15837ade771bdbbaf7d7927f132698f5b1b8fd8a"
+    },
+    {
+      "path": "docs/history/revision-3/seed-audit.json",
+      "bytes": 1911,
+      "sha256": "228341b29a5d06ad4234873c797a29ad9962f7b6f027ad3aa2457681ceec549b"
+    },
+    {
+      "path": "docs/history/revision-3/seed-mechanical.json",
+      "bytes": 1112,
+      "sha256": "2e394f1969b4b906412429a0a0490d8fae5e8dd6466bc35ce93417ac525421a3"
+    },
+    {
+      "path": "docs/history/revision-3/seed-qa.json",
+      "bytes": 1365,
+      "sha256": "3b2c113942f1035fabfaa15034052f01480fb54ba9d5301eb8be0cc6aef9b6c8"
+    },
+    {
+      "path": "docs/history/revision-3/seed.yaml",
+      "bytes": 12822,
+      "sha256": "c6724e801d31a0895873caa2f0af3bf167069d250afccc8e7bb7b86936aaa923"
+    },
+    {
+      "path": "docs/history/revision-4/SPEC.md",
+      "bytes": 24096,
+      "sha256": "ea957f6ee49e25636e6c89615eead6bf1a972a480b43cddc1029aa35beea841c"
+    },
+    {
+      "path": "docs/history/revision-4/revision-4.md",
+      "bytes": 2786,
+      "sha256": "e1965a6a37e045e6c7f8c472c32a780dc3c3df5dd25594e371f156abc15a6e2d"
+    },
+    {
+      "path": "docs/history/revision-4/seed-audit.json",
+      "bytes": 1951,
+      "sha256": "5a89ae66fc44512a7c430b7c7651bfa6aa6a9963f82a23f475ce464f77dff911"
+    },
+    {
+      "path": "docs/history/revision-4/seed-mechanical.json",
+      "bytes": 1132,
+      "sha256": "57d0c46b4f16da5457380854ff5702d971e90241651c6e37e26c5ed7fdc3a388"
+    },
+    {
+      "path": "docs/history/revision-4/seed-qa.json",
+      "bytes": 1295,
+      "sha256": "10a819cea3cccef09654789e576d1b1f4d1be917f3fd4ae61d74e1709f0fd25b"
+    },
+    {
+      "path": "docs/history/revision-4/seed.yaml",
+      "bytes": 14946,
+      "sha256": "a99b40fae398596c3bb1c8aa683f723843a59d2824e264ed86916c1226fad68e"
+    },
+    {
+      "path": "docs/revision-2.md",
+      "bytes": 3241,
+      "sha256": "35c4e03004f44386e2aa9b336c92d1fa13d950e9a618f5ead9f861f26723c8c3"
+    },
+    {
+      "path": "docs/revision-3.md",
+      "bytes": 3158,
+      "sha256": "3f2e0cd128858de3352402dc15837ade771bdbbaf7d7927f132698f5b1b8fd8a"
+    },
+    {
+      "path": "docs/revision-4.md",
+      "bytes": 2786,
+      "sha256": "e1965a6a37e045e6c7f8c472c32a780dc3c3df5dd25594e371f156abc15a6e2d"
+    },
+    {
+      "path": "docs/revision-5.md",
+      "bytes": 908,
+      "sha256": "384dea47d8df8fd248ae5e4b296e8313b7d5b73667874c029af789d790b659f9"
+    },
+    {
+      "path": "docs/seed-audit.json",
+      "bytes": 1918,
+      "sha256": "ad9e84e0cf9b0a4e01f045f1ca461c2d8fcc19071fac3739bd39c431ace1cfc1"
+    },
+    {
+      "path": "docs/seed-mechanical.json",
+      "bytes": 903,
+      "sha256": "4c3395846d71409350c7bb1ae9e95df7e4c79285a362f74141bf4dd464856222"
+    },
+    {
+      "path": "docs/seed-qa.json",
+      "bytes": 1017,
+      "sha256": "3f1c964a2d3bd9b25b9abdd9d11c9c5d90ec3a9698d6d0993c717e1020eece10"
+    },
+    {
+      "path": "handoff/state.json",
+      "bytes": 2101,
+      "sha256": "f1fbef206c8716a5e5cb6c711d62af2ec9faecba8a238f5f49c0b5952a847903"
+    },
+    {
+      "path": "seed.yaml",
+      "bytes": 15231,
+      "sha256": "010305ee54399880e1a44cff03324f29d8acdeddc0094fe8c65215462073156d"
+    }
+  ]
+}

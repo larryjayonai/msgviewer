@@ -1,0 +1,52 @@
+{
+  "artifact_type": "implementation_specification",
+  "seed_id": "seed_msgviewer_20260917",
+  "revision": 5,
+  "recorded_at": "2026-09-17T14:03:19.231900+00:00",
+  "generation_path": "direct_revision_of_local_conversation_seed",
+  "user_authorization": "User explicitly requested one fixed language-button caption in all UI languages.",
+  "review_method": "Independent local QA of the revision 4 to 5 delta; not an MCP or runtime evaluation.",
+  "pass_threshold": 0.9,
+  "max_iterations": 5,
+  "iteration_history": [
+    {
+      "iteration": 1,
+      "score": 0.99,
+      "verdict": "pass",
+      "qa_result": "docs/seed-qa.json",
+      "requirement_revision_from_qa": false
+    }
+  ],
+  "schema_validation": {
+    "result": "passed",
+    "package": "ouroboros-ai",
+    "version": "0.51.7",
+    "method": "yaml.safe_load then ouroboros.core.seed.Seed.model_validate plus exact caption and wireframe checks",
+    "acceptance_criteria": 11,
+    "ontology_fields": 6,
+    "evaluation_weight_total": 1.0,
+    "exit_code": 0,
+    "evidence": "docs/seed-mechanical.json"
+  },
+  "reviewed_artifacts": [
+    {
+      "path": "seed.yaml",
+      "sha256": "010305ee54399880e1a44cff03324f29d8acdeddc0094fe8c65215462073156d",
+      "bytes": 15231
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "e705ec684e1a91aba3d865662607dfbf108822f5008ade9a3d911e3c12936230",
+      "bytes": 25151
+    }
+  ],
+  "revision_decisions": "docs/revision-5.md",
+  "previous_revision": "docs/history/revision-4/seed-audit.json",
+  "previous_evaluation_applicability": "Revision 1 only; superseded for current requirements.",
+  "ambiguity_score_provenance": "Seed schema default 0.15; no tool-measured ambiguity result exists.",
+  "unresolved_slots": [],
+  "implementation_status": "not_started",
+  "runtime_tests": "not_run",
+  "benchmark_results": "not_measured",
+  "mcp_interview_id": null
+}

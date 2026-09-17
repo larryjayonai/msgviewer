@@ -1,0 +1,94 @@
+{
+  "evaluated_at": "2026-09-17T13:25:38.959482+00:00",
+  "artifact_type": "docs",
+  "scope": "Approved requirements specification, not executable implementation",
+  "evaluation_mode": "local_advisory_fallback_no_callable_ouroboros_mcp",
+  "python_version": "3.12.10",
+  "ouroboros_version": "0.51.7",
+  "stage_1": "pass",
+  "checks": [
+    {
+      "check": "yaml_and_seed_schema",
+      "status": "pass",
+      "details": "Duplicate-key detection + yaml.SafeLoader + ouroboros.core.seed.Seed.model_validate"
+    },
+    {
+      "check": "acceptance_identifiers",
+      "status": "pass",
+      "details": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08"
+      ]
+    },
+    {
+      "check": "evaluation_weights",
+      "status": "pass",
+      "details": 1.0
+    },
+    {
+      "check": "verification_document",
+      "status": "pass",
+      "details": "SPEC.md"
+    },
+    {
+      "check": "audit_json_and_reference",
+      "status": "pass",
+      "details": "Both prior JSON reports parse; referenced review file exists"
+    },
+    {
+      "check": "prior_review_hash_seed.yaml",
+      "status": "pass",
+      "details": "f6e7e7bb0d59b5ad413a224f26de145cc89b7a52dd2864c5f08f04d234e2efa4"
+    },
+    {
+      "check": "prior_review_hash_SPEC.md",
+      "status": "pass",
+      "details": "e2f53289fcd82737c494b0b55be3f873aa9389518a9097c63e38fef33a1f3781"
+    },
+    {
+      "check": "text_integrity",
+      "status": "pass",
+      "details": []
+    }
+  ],
+  "reviewed_artifacts": [
+    {
+      "path": "seed.yaml",
+      "sha256": "f6e7e7bb0d59b5ad413a224f26de145cc89b7a52dd2864c5f08f04d234e2efa4",
+      "bytes": 7865
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "e2f53289fcd82737c494b0b55be3f873aa9389518a9097c63e38fef33a1f3781",
+      "bytes": 11215
+    }
+  ],
+  "future_deliverables": [
+    {
+      "path": "dist/MsgViewer.exe",
+      "exists": false,
+      "role": "future_implementation_deliverable"
+    },
+    {
+      "path": "reports/acceptance.md",
+      "exists": false,
+      "role": "future_implementation_deliverable"
+    },
+    {
+      "path": "reports/performance.csv",
+      "exists": false,
+      "role": "future_implementation_deliverable"
+    }
+  ],
+  "runtime_build_test_coverage": "not_applicable_to_current_document_artifact; not_run_for_app",
+  "numeric_evaluation_score": null,
+  "session_id": null,
+  "artifact_revision": 1,
+  "current_applicability": "Historical evidence for revision 1; superseded by revision 5. See docs/seed-mechanical.json for current spec schema checks."
+}

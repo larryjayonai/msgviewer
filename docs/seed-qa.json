@@ -1,0 +1,14 @@
+{
+  "score": 0.99,
+  "verdict": "pass",
+  "dimensions": {
+    "correctness": 1.0,
+    "completeness": 1.0,
+    "quality": 0.99,
+    "intent_alignment": 1.0,
+    "domain_specific": 0.98
+  },
+  "differences": [],
+  "suggestions": [],
+  "reasoning": "수정 4와 비교한 결과 변경은 요청된 고정 언어 버튼 문구와 관련 검증·출처 기록에 한정된다. seed.yaml과 SPEC.md 및 와이어프레임은 정확히 ‘언어 / Language / Langue / 言語’를 한 버튼에 표시하고 UI 언어와 무관하게 유지하도록 일치한다. 상단 오른쪽에서 종료 버튼 바로 왼쪽에 배치하며 일반 버튼 번역 규칙의 예외를 명시했다. 선택 항목 ‘한국어 / English / Français / 日本語’, Windows 표시 언어에 따른 시작 언어, 실행 중에만 유지하는 수동 선택 및 기존 x86·화면 배치 조건은 보존되었다. 이는 문서 변경에 대한 독립 로컬 QA이며 앱 구현이나 실행 검증 결과는 아니다."
+}

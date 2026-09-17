@@ -1,0 +1,53 @@
+{
+  "artifact_type": "implementation_specification",
+  "seed_id": "seed_msgviewer_20260917",
+  "revision": 2,
+  "recorded_at": "2026-09-17T13:38:10.201279+00:00",
+  "generation_path": "direct_revision_of_local_conversation_seed",
+  "user_authorization": "User requested zero Internet use and four UI languages, then confirmed locale-first launch selection and session-only manual choice.",
+  "review_method": "Independent local QA agent; not an MCP evaluation or runtime test.",
+  "pass_threshold": 0.9,
+  "max_iterations": 5,
+  "iteration_history": [
+    {
+      "iteration": 1,
+      "score": 0.97,
+      "verdict": "pass",
+      "qa_result": "docs/seed-qa.json",
+      "requirement_revision_from_qa": false
+    }
+  ],
+  "schema_validation": {
+    "result": "passed",
+    "package": "ouroboros-ai",
+    "version": "0.51.7",
+    "method": "yaml.safe_load then ouroboros.core.seed.Seed.model_validate",
+    "acceptance_criteria": 10,
+    "ontology_fields": 5,
+    "evaluation_weight_total": 1.0,
+    "exit_code": 0,
+    "evidence": "docs/seed-mechanical.json",
+    "correction": "Quoted provenance.revised_at as a string for JSON-serializable Seed extras; no requirement changed."
+  },
+  "reviewed_artifacts": [
+    {
+      "path": "seed.yaml",
+      "sha256": "5e28a65df19ef3d0959d669353a272fef76fa507cceba7bb01713acf76bdd4f5",
+      "bytes": 10916
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "189e42118640734bc21540b24842806efb76a6d32c542c42235817bec74ca2d9",
+      "bytes": 15934
+    }
+  ],
+  "revision_decisions": "docs/revision-2.md",
+  "previous_revision": "docs/history/revision-1/seed-audit.json",
+  "previous_evaluation_applicability": "Revision 1 only; superseded for current requirements.",
+  "ambiguity_score_provenance": "Seed schema default 0.15; no tool-measured ambiguity result exists.",
+  "unresolved_slots": [],
+  "implementation_status": "not_started",
+  "runtime_tests": "not_run",
+  "benchmark_results": "not_measured",
+  "mcp_interview_id": null
+}

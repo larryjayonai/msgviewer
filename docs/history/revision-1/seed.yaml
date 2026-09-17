@@ -1,0 +1,98 @@
+goal: >-
+  Windows 10/11에서 인터넷과 추가 설치 없이 실행되는 x86 공용 단일 EXE MSG 뷰어를 만든다.
+  EXE 7~8MB를 목표로 하며, RAM 절약보다 최초 실행·MSG 열기·종료 속도를 우선한다.
+  간단한 GUI에서 본문 서식·표·이미지와 텍스트 선택·복사, 첨부파일 저장을 제공한다.
+task_type: code
+brownfield_context:
+  project_type: greenfield
+constraints:
+  - 동일한 x86 EXE로 Windows 10 x86·x64와 Windows 11 x64를 지원한다.
+  - 사용자 PC에는 Outlook, 별도 런타임, 브라우저 또는 추가 구성요소를 설치하지 않는다.
+  - 배포물은 EXE 하나이며 Windows 기본 구성만 사용해 오프라인에서 실행한다.
+  - 7~8MB는 용량 목표다. 7MB 미만도 허용하며 용량을 맞추려고 파일을 키우지 않는다.
+  - 최초 실행·파일 열기·종료 속도를 우선하며, 이를 위한 RAM 추가 사용을 허용한다.
+  - 앱의 애니메이션·그림자·블러·전환·장식용 이미지는 제외하고 메일 본문 표현은 유지한다.
+  - 한 번에 MSG 하나만 표시하며 폴더 탐색형 목록이나 다중 문서 UI를 만들지 않는다.
+  - 첨부파일 열기·실행·내부 미리보기는 제공하지 않는다.
+  - 앱 임시파일·캐시·자체 열람기록을 정리하며 사용자 저장 첨부파일과 Windows 자체 기록은 삭제하지 않는다.
+  - 언어·GUI 프레임워크·HTML 렌더러는 미지정이며 선택한 기술도 위 배포 조건을 충족해야 한다.
+acceptance_criteria:
+  - description: >-
+      [AC-01] 동일한 x86 EXE가 Windows 10 x86·x64 및 Windows 11 x64의 기본 구성에서
+      인터넷 연결과 추가 설치 없이 실행되고 MSG 열람·첨부 저장·종료가 가능하다.
+    expected_artifacts: [dist/MsgViewer.exe]
+  - description: >-
+      [AC-02] 열기 버튼은 MSG 파일 선택 창을 표시하고 선택한 파일 하나를 연다.
+      닫기는 현재 MSG를 닫고 빈 뷰어로 돌아가며, 종료 버튼과 창 X는 앱을 종료한다.
+  - description: >-
+      [AC-03] 본문 텍스트·서식·표·MSG 내부 삽입 이미지가 읽을 수 있게 표시된다.
+      표의 행·열과 내용 순서가 유지되고, 내부 이미지가 불필요하게 누락되지 않는다.
+      네트워크에서 외부 리소스를 가져오지 않으며 본문을 임의로 일반 텍스트로만 축소하지 않는다.
+  - description: >-
+      [AC-04] 표시한 본문의 텍스트를 마우스로 선택하고 우클릭 복사로 클립보드에 복사할 수 있다.
+      한글·영문 및 표 안의 텍스트를 붙여 넣어 선택한 내용과 일치함을 확인한다.
+  - description: >-
+      [AC-05] 첨부파일은 파일명 목록으로만 표시하며 이름 클릭 시 다른 이름으로 저장 창이 열린다.
+      기본 위치는 Windows가 지정한 현재 사용자의 실제 바탕화면이다.
+      저장 결과는 원본 첨부 내용과 일치하고, 취소 시 파일을 만들거나 첨부를 실행하지 않는다.
+  - description: >-
+      [AC-06] 닫기는 현재 MSG의 앱 임시파일·캐시를, 종료 버튼과 창 X는 해당 실행의
+      앱 임시파일·캐시를 삭제한다. 자체 열람기록을 남기지 않으며 사용자가 저장한 첨부는 보존한다.
+      비정상 종료 잔여물은 다음 실행에서 정리하고 다른 앱이나 실행 중인 인스턴스의 파일은 건드리지 않는다.
+  - description: >-
+      [AC-07] 앱이 추가하는 애니메이션·그림자·블러·전환·장식용 이미지 없이 단순한 GUI를 제공하며,
+      이 단순화로 메일 본문의 서식·표·이미지 또는 선택·복사 기능이 없어지지 않는다.
+  - description: >-
+      [AC-08] 최종 EXE 크기와 최초 실행·MSG 열기·종료 시간을 명시된 환경에서 실측한다.
+      크기는 바이트·MB·MiB로, 시간은 측정 구간·원자료·중앙값과 함께 보고한다.
+      7~8MB 목표 충족 여부와 초과 사유를 구분하고, 확인되지 않은 시간 보장이나 RAM 상한을 만들지 않는다.
+    expected_artifacts: [reports/acceptance.md, reports/performance.csv]
+ontology_schema:
+  name: OfflineMsgViewer
+  description: 단일 MSG 열람, 첨부 저장, 임시자원 수명 및 실행 검증의 경계. 구현 클래스 형태를 강제하지 않는다.
+  fields:
+    - {name: viewer_session, type: object, description: 현재 파일 또는 빈 화면과 열기·닫기·종료 상태}
+    - {name: message_body, type: object, description: 본문 텍스트·서식·표·내부 이미지와 선택 가능한 표시 내용}
+    - {name: attachments, type: array, description: 첨부 이름과 원본 내용 및 사용자가 선택한 저장 대상}
+    - {name: temporary_resources, type: array, description: 앱 소유 임시자원의 소유 실행·수명·정리 상태}
+    - {name: verification_evidence, type: object, description: OS별 실행 결과와 최종 EXE 크기·시작·열기·종료 실측}
+evaluation_principles:
+  - name: compatibility_and_correctness
+    description: 추가 설치 없는 실행과 본문·복사·첨부 저장·정리의 정확성은 필수이며 점수로 상쇄하지 않는다.
+    weight: 0.45
+  - name: responsiveness
+    description: 필수 기능을 보존하면서 최초 실행·MSG 열기·종료 지연을 줄이고 RAM 절약보다 우선한다.
+    weight: 0.35
+  - name: compactness_and_simplicity
+    description: 7~8MB 목표와 간단한 UI를 추구하며 압축·장식 때문에 속도가 악화되지 않게 한다.
+    weight: 0.20
+exit_conditions:
+  - name: verified_delivery
+    description: 필수 동작을 검증한 단일 EXE와 측정 결과가 제공된다.
+    criteria: >-
+      AC-01~07을 실제 결과로 검증하고 AC-08의 측정값과 목표 달성 상태를 보고한다.
+      미시험 환경은 통과로 표시하지 않으며 파일이나 보고서의 존재만으로 동작 검증을 대체하지 않는다.
+      8MB 초과는 목표 미달로 명시한다. 합의된 시간 SLA가 없으므로 절대 속도 목표 달성을 주장하지 않는다.
+verification_plan:
+  details: SPEC.md
+  platform_matrix: [Windows 10 x86, Windows 10 x64, Windows 11 x64]
+  startup: 프로세스 생성 요청부터 빈 뷰어의 열기 버튼이 입력 가능한 시점까지
+  open_msg: 파일 선택 확정부터 본문·내부 이미지 표시가 끝나고 선택·복사가 가능한 시점까지
+  exit: 종료 또는 창 X 입력부터 임시자원 정리 및 프로세스 종료까지
+  evidence_policy: OS 빌드·하드웨어·저장장치·보안 검사 상태·MSG 크기·측정 조건을 기록하고 미측정은 미검증으로 표시한다.
+  target_policy: MB는 1000000바이트로 보고하며 8000000바이트 이하를 크기 목표 충족으로 분류한다. 더 작은 결과도 허용한다.
+  scope_policy: 외부 서버에만 있는 이미지는 오프라인에서 복구할 수 없으며 Outlook과 모든 픽셀의 동일성은 보장하지 않는다.
+metadata:
+  seed_id: seed_msgviewer_20260917
+  version: 1.0.0
+  created_at: 2026-09-17T13:15:35Z
+  ambiguity_score: 0.15
+  interview_id: null
+  generation_mode: conversation_fallback
+  degraded: false
+  unresolved_slots: []
+provenance:
+  approval: 사용자가 최종 목표와 범위를 확인하고 이 내용으로 명세 작성을 승인함
+  source: 현재 대화의 확정 답변을 사용한 로컬 Seed 작성이며 MCP 세션이나 평가 결과를 생성하지 않음
+  ambiguity_note: ambiguity_score는 Seed 스키마 기본값이며 도구로 측정한 모호성 점수가 아님
+  implementation_status: 명세만 작성한 상태이며 앱 구현·EXE 빌드·런타임 성능 검증은 아직 수행하지 않음

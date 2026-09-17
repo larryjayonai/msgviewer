@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-09-17T13:58:04.372096+00:00",
+  "revision": 4,
+  "status": "passed",
+  "schema": "ouroboros.core.seed.Seed",
+  "package_version": "0.51.7",
+  "acceptance_criteria": 11,
+  "ontology_fields": 6,
+  "checks": [
+    "unique_yaml_keys",
+    "seed_schema",
+    "ac_identifiers",
+    "stable_seed_id",
+    "x86_retained",
+    "display_language_policy",
+    "four_languages",
+    "no_unresolved_slots",
+    "toolbar_groups_order",
+    "content_rows_order",
+    "timestamp_seconds",
+    "prior_ontology_preserved",
+    "evaluation_weights",
+    "verification_reference",
+    "revision_3_archive_hashes",
+    "text_integrity"
+  ],
+  "unresolved_slots": [],
+  "prior_revision_snapshot_hashes": "verified",
+  "source_artifacts": [
+    {
+      "path": "seed.yaml",
+      "sha256": "a99b40fae398596c3bb1c8aa683f723843a59d2824e264ed86916c1226fad68e",
+      "bytes": 14946
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "ea957f6ee49e25636e6c89615eead6bf1a972a480b43cddc1029aa35beea841c",
+      "bytes": 24096
+    }
+  ],
+  "runtime_test_status": "not_run_specification_only"
+}

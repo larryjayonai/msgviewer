@@ -1,0 +1,53 @@
+{
+  "recorded_at_utc": "2026-09-17T14:14:14.649662+00:00",
+  "original_workspace": "C:\\Users\\LG\\Documents\\ChatGPT\\msgviewer",
+  "purpose": "Local handoff to Antigravity from saved approved specifications",
+  "seed_id": "seed_msgviewer_20260917",
+  "specification_revision": 5,
+  "canonical_files": [
+    "seed.yaml",
+    "SPEC.md"
+  ],
+  "implementation_status": "not_started",
+  "source_code_created": false,
+  "executable_built": false,
+  "runtime_tests": "not_run",
+  "benchmarks": "not_measured",
+  "previous_run_status": "Interrupted while reading run instructions; no execution dispatched",
+  "execution_id": null,
+  "session_id": null,
+  "job_id": null,
+  "background_implementation_started": false,
+  "relevant_process_snapshot": "No matching python, uv, agy, MsgViewer, or selected C/C++ build processes observed at handoff check",
+  "document_validation": {
+    "schema_result": "passed",
+    "schema_evidence": "docs/seed-mechanical.json",
+    "qa_result": "pass",
+    "qa_score": 0.99,
+    "qa_scope": "Independent local review of specification revision 4 to 5 only; not application verification",
+    "qa_evidence": "docs/seed-qa.json",
+    "canonical_hashes_verified_again": true
+  },
+  "antigravity": {
+    "cli_path": "C:\\Users\\LG\\AppData\\Local\\agy\\bin\\agy.exe",
+    "cli_help_check": "passed",
+    "launcher_preflight": "passed",
+    "launcher": "Start-Antigravity.ps1",
+    "prompt_file": "ANTIGRAVITY_PROMPT.txt",
+    "new_conversation_started": false,
+    "live_authentication_verified": false,
+    "live_mcp_connection_verified": false
+  },
+  "git": {
+    "branch": "master",
+    "handoff_files_saved": true,
+    "handoff_files_committed": false
+  },
+  "conversation_preservation": "Approved requirements, decisions, revision history, and work state; not a verbatim raw chat export",
+  "next_action": "Open this workspace in Antigravity and send ANTIGRAVITY_PROMPT.txt, or run Start-Antigravity.ps1",
+  "desired_outputs": [
+    "dist/MsgViewer.exe",
+    "reports/acceptance.md",
+    "reports/performance.csv"
+  ]
+}

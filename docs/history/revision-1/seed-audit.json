@@ -1,0 +1,46 @@
+{
+  "artifact_type": "implementation_specification",
+  "seed_id": "seed_msgviewer_20260917",
+  "recorded_at": "2026-09-17T13:20:11.947197+00:00",
+  "generation_path": "local_conversation_fallback",
+  "user_authorization": "Final scope approved for specification generation; implementation not performed.",
+  "review_method": "Independent local agent using qa-judge rubric; not an MCP evaluation or runtime test.",
+  "pass_threshold": 0.9,
+  "max_iterations": 5,
+  "iteration_history": [
+    {
+      "iteration": 1,
+      "score": 0.97,
+      "verdict": "pass",
+      "qa_result": "docs/seed-qa.json",
+      "revision_applied": false
+    }
+  ],
+  "schema_validation": {
+    "result": "passed",
+    "package": "ouroboros-ai",
+    "version": "0.51.7",
+    "method": "yaml.safe_load then ouroboros.core.seed.Seed.model_validate",
+    "acceptance_criteria": 8,
+    "ontology_fields": 5,
+    "evaluation_weight_total": 1.0,
+    "exit_code": 0
+  },
+  "reviewed_artifacts": [
+    {
+      "path": "seed.yaml",
+      "sha256": "f6e7e7bb0d59b5ad413a224f26de145cc89b7a52dd2864c5f08f04d234e2efa4",
+      "bytes": 7865
+    },
+    {
+      "path": "SPEC.md",
+      "sha256": "e2f53289fcd82737c494b0b55be3f873aa9389518a9097c63e38fef33a1f3781",
+      "bytes": 11215
+    }
+  ],
+  "ambiguity_score_provenance": "Seed schema default 0.15; no tool-measured ambiguity result exists.",
+  "implementation_status": "not_started",
+  "runtime_tests": "not_run",
+  "benchmark_results": "not_measured",
+  "mcp_interview_id": null
+}
