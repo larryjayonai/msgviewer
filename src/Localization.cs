@@ -14,9 +14,21 @@ namespace MsgViewer
 
     public static class Localization
     {
-        public const string FixedLanguageButtonText = "언어 / Language / Langue / 言語";
+        public const string FixedLanguageButtonText = "언어 / Language / Langue / 言語 (F8)";
 
         public static AppLanguage CurrentLanguage { get; set; }
+
+        public static AppLanguage GetNextLanguage(AppLanguage current)
+        {
+            switch (current)
+            {
+                case AppLanguage.Korean: return AppLanguage.English;
+                case AppLanguage.English: return AppLanguage.French;
+                case AppLanguage.French: return AppLanguage.Japanese;
+                case AppLanguage.Japanese: return AppLanguage.Korean;
+                default: return AppLanguage.Korean;
+            }
+        }
 
         static Localization()
         {
@@ -67,11 +79,11 @@ namespace MsgViewer
             {
                 switch (CurrentLanguage)
                 {
-                    case AppLanguage.Korean: return "열기";
-                    case AppLanguage.English: return "Open";
-                    case AppLanguage.French: return "Ouvrir";
-                    case AppLanguage.Japanese: return "開く";
-                    default: return "Open";
+                    case AppLanguage.Korean: return "열기 (F2)";
+                    case AppLanguage.English: return "Open (F2)";
+                    case AppLanguage.French: return "Ouvrir (F2)";
+                    case AppLanguage.Japanese: return "開く (F2)";
+                    default: return "Open (F2)";
                 }
             }
         }
@@ -82,11 +94,11 @@ namespace MsgViewer
             {
                 switch (CurrentLanguage)
                 {
-                    case AppLanguage.Korean: return "닫기";
-                    case AppLanguage.English: return "Close";
-                    case AppLanguage.French: return "Fermer";
-                    case AppLanguage.Japanese: return "閉じる";
-                    default: return "Close";
+                    case AppLanguage.Korean: return "닫기 (F4)";
+                    case AppLanguage.English: return "Close (F4)";
+                    case AppLanguage.French: return "Fermer (F4)";
+                    case AppLanguage.Japanese: return "閉じる (F4)";
+                    default: return "Close (F4)";
                 }
             }
         }

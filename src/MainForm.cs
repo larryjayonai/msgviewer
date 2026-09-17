@@ -61,6 +61,7 @@ namespace MsgViewer
             this.MinimumSize = new Size(680, 520);
             this.Size = new Size(840, 680);
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.KeyPreview = true;
 
             // 1. Top Bar
             _topBarPanel = new Panel();
@@ -122,8 +123,10 @@ namespace MsgViewer
             ToolStripMenuItem mnuFr = new ToolStripMenuItem("Français", null, (s, e) => SwitchLanguage(AppLanguage.French));
             ToolStripMenuItem mnuJa = new ToolStripMenuItem("日本語", null, (s, e) => SwitchLanguage(AppLanguage.Japanese));
             _langMenu.Items.AddRange(new ToolStripItem[] { mnuKo, mnuEn, mnuFr, mnuJa });
+            _langMenu.Closed += (s, e) => ResetButtonState();
 
             // 2. Header Panel
+
             _headerPanel = new Panel();
             _headerPanel.Dock = DockStyle.Top;
             _headerPanel.Height = 150;
@@ -306,10 +309,48 @@ namespace MsgViewer
             e.Cancel = true;
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.F2)
+            {
+                BtnOpen_Click(null, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == Keys.F4)
+            {
+                BtnClose_Click(null, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == Keys.F8)
+            {
+                CycleNextLanguage();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void CycleNextLanguage()
+        {
+            AppLanguage next = Localization.GetNextLanguage(Localization.CurrentLanguage);
+            SwitchLanguage(next);
+        }
+
+        private void ResetButtonState()
+        {
+            // Clear focus from button to prevent sunken/pressed visual glitch
+            this.ActiveControl = null;
+            if (_headerPanel != null && _headerPanel.CanFocus)
+            {
+                _headerPanel.Focus();
+            }
+            _btnLang.Invalidate();
+        }
+
         private void SwitchLanguage(AppLanguage lang)
         {
             Localization.CurrentLanguage = lang;
             ApplyLanguage();
+            ResetButtonState();
         }
 
         private void ApplyLanguage()
@@ -329,11 +370,20 @@ namespace MsgViewer
             _lblSubjectTitle.Text = Localization.Subject + ":";
             _lblAttachSectionTitle.Text = Localization.AttachmentsHeader;
 
-            // Re-render current message attachments view with updated language
+            // Re-render current message attachments view and empty fields with updated language
             if (_currentMsg != null)
             {
                 UpdateAttachmentList();
-                if (string.IsNullOrEmpty(_currentMsg.DisplayBcc))
+
+                if (string.IsNullOrEmpty(_currentMsg.DisplayTo) || _currentMsg.DisplayTo.Trim().Length == 0)
+                {
+                    _txtTo.Text = Localization.None;
+                }
+                if (string.IsNullOrEmpty(_currentMsg.Subject) || _currentMsg.Subject.Trim().Length == 0)
+                {
+                    _txtSubject.Text = Localization.None;
+                }
+                if (string.IsNullOrEmpty(_currentMsg.DisplayBcc) || _currentMsg.DisplayBcc.Trim().Length == 0)
                 {
                     _txtBcc.Text = Localization.NoInformation;
                 }
@@ -348,6 +398,7 @@ namespace MsgViewer
         {
             _langMenu.Show(_btnLang, new Point(0, _btnLang.Height));
         }
+
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
@@ -396,10 +447,16 @@ namespace MsgViewer
                 ? msg.SentDate.Value.ToString("yyyy-MM-dd HH:mm:ss")
                 : Localization.NoInformation;
 
-            _txtTo.Text = msg.DisplayTo ?? "";
+            _txtTo.Text = !string.IsNullOrEmpty(msg.DisplayTo) && msg.DisplayTo.Trim().Length > 0
+                ? msg.DisplayTo
+                : Localization.None;
             _txtCc.Text = msg.DisplayCc ?? "";
-            _txtBcc.Text = !string.IsNullOrEmpty(msg.DisplayBcc) ? msg.DisplayBcc : Localization.NoInformation;
-            _txtSubject.Text = msg.Subject ?? "";
+            _txtBcc.Text = !string.IsNullOrEmpty(msg.DisplayBcc) && msg.DisplayBcc.Trim().Length > 0
+                ? msg.DisplayBcc
+                : Localization.NoInformation;
+            _txtSubject.Text = !string.IsNullOrEmpty(msg.Subject) && msg.Subject.Trim().Length > 0
+                ? msg.Subject
+                : Localization.None;
 
             // Adjust subject height based on length
             if (!string.IsNullOrEmpty(msg.Subject) && msg.Subject.Length > 80)

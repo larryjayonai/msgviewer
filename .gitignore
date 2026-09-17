@@ -8,5 +8,7 @@ tests/*.exe
 *.user
 
 # Windows thumbnails
-Thumbs.db
-Desktop.ini
+# Windows copy files
+* - 복사본.*
+* - Copy.*
+

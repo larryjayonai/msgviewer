@@ -108,20 +108,26 @@ namespace MsgViewer.Tests
                 failed++;
             }
 
-            // Test 5: Localization & Fixed Language Button
+            // Test 5: Localization & Fixed Language Button (Revision 6 / v1.1)
             try
             {
-                Assert(Localization.FixedLanguageButtonText == "언어 / Language / Langue / 言語", "AC-10: Button text is fixed");
+                Assert(Localization.FixedLanguageButtonText == "언어 / Language / Langue / 言語 (F8)", "AC-10: Button text is fixed with (F8)");
                 Localization.CurrentLanguage = AppLanguage.Korean;
-                Assert(Localization.Open == "열기" && Localization.None == "없음", "AC-10: Korean strings correct");
+                Assert(Localization.Open == "열기 (F2)" && Localization.Close == "닫기 (F4)" && Localization.None == "없음", "AC-10: Korean strings correct");
                 Localization.CurrentLanguage = AppLanguage.English;
-                Assert(Localization.Open == "Open" && Localization.None == "None", "AC-10: English strings correct");
+                Assert(Localization.Open == "Open (F2)" && Localization.Close == "Close (F4)" && Localization.None == "None", "AC-10: English strings correct");
                 Localization.CurrentLanguage = AppLanguage.French;
-                Assert(Localization.Open == "Ouvrir" && Localization.None == "Aucun", "AC-10: French strings correct");
+                Assert(Localization.Open == "Ouvrir (F2)" && Localization.Close == "Fermer (F4)" && Localization.None == "Aucun", "AC-10: French strings correct");
                 Localization.CurrentLanguage = AppLanguage.Japanese;
-                Assert(Localization.Open == "開く" && Localization.None == "なし", "AC-10: Japanese strings correct");
+                Assert(Localization.Open == "開く (F2)" && Localization.Close == "閉じる (F4)" && Localization.None == "なし", "AC-10: Japanese strings correct");
 
-                Console.WriteLine("  [PASS] Test 5: Localization (4 languages + fixed button label)");
+                // Test language cycling
+                Assert(Localization.GetNextLanguage(AppLanguage.Korean) == AppLanguage.English, "Cycle: Korean -> English");
+                Assert(Localization.GetNextLanguage(AppLanguage.English) == AppLanguage.French, "Cycle: English -> French");
+                Assert(Localization.GetNextLanguage(AppLanguage.French) == AppLanguage.Japanese, "Cycle: French -> Japanese");
+                Assert(Localization.GetNextLanguage(AppLanguage.Japanese) == AppLanguage.Korean, "Cycle: Japanese -> Korean");
+
+                Console.WriteLine("  [PASS] Test 5: Localization (4 languages + fixed (F8) button label + F8 cycling)");
                 passed++;
             }
             catch (Exception ex)
@@ -130,20 +136,62 @@ namespace MsgViewer.Tests
                 failed++;
             }
 
-            // Test 6: Binary size check
+            // Test 6: Empty To & Empty Subject Display Logic
+            try
+            {
+                MsgMessage emptyMsg = new MsgMessage();
+                emptyMsg.DisplayTo = "";
+                emptyMsg.Subject = null;
+                emptyMsg.SenderName = "sender";
+
+                Localization.CurrentLanguage = AppLanguage.Korean;
+                string toKorean = !string.IsNullOrEmpty(emptyMsg.DisplayTo) && emptyMsg.DisplayTo.Trim().Length > 0 ? emptyMsg.DisplayTo : Localization.None;
+                string subjKorean = !string.IsNullOrEmpty(emptyMsg.Subject) && emptyMsg.Subject.Trim().Length > 0 ? emptyMsg.Subject : Localization.None;
+                Assert(toKorean == "없음", "Empty To displayed as '없음'");
+                Assert(subjKorean == "없음", "Empty Subject displayed as '없음'");
+
+                Localization.CurrentLanguage = AppLanguage.English;
+                string toEnglish = !string.IsNullOrEmpty(emptyMsg.DisplayTo) && emptyMsg.DisplayTo.Trim().Length > 0 ? emptyMsg.DisplayTo : Localization.None;
+                string subjEnglish = !string.IsNullOrEmpty(emptyMsg.Subject) && emptyMsg.Subject.Trim().Length > 0 ? emptyMsg.Subject : Localization.None;
+                Assert(toEnglish == "None", "Empty To displayed as 'None'");
+                Assert(subjEnglish == "None", "Empty Subject displayed as 'None'");
+
+                Localization.CurrentLanguage = AppLanguage.French;
+                string toFrench = !string.IsNullOrEmpty(emptyMsg.DisplayTo) && emptyMsg.DisplayTo.Trim().Length > 0 ? emptyMsg.DisplayTo : Localization.None;
+                string subjFrench = !string.IsNullOrEmpty(emptyMsg.Subject) && emptyMsg.Subject.Trim().Length > 0 ? emptyMsg.Subject : Localization.None;
+                Assert(toFrench == "Aucun", "Empty To displayed as 'Aucun'");
+                Assert(subjFrench == "Aucun", "Empty Subject displayed as 'Aucun'");
+
+                Localization.CurrentLanguage = AppLanguage.Japanese;
+                string toJapanese = !string.IsNullOrEmpty(emptyMsg.DisplayTo) && emptyMsg.DisplayTo.Trim().Length > 0 ? emptyMsg.DisplayTo : Localization.None;
+                string subjJapanese = !string.IsNullOrEmpty(emptyMsg.Subject) && emptyMsg.Subject.Trim().Length > 0 ? emptyMsg.Subject : Localization.None;
+                Assert(toJapanese == "なし", "Empty To displayed as 'なし'");
+                Assert(subjJapanese == "なし", "Empty Subject displayed as 'なし'");
+
+                Console.WriteLine("  [PASS] Test 6: Empty To & Empty Subject None handling across 4 languages");
+                passed++;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("  [FAIL] Test 6: " + ex.Message);
+                failed++;
+            }
+
+
+            // Test 7: Binary size check
             try
             {
                 string exePath = @"C:\Users\LG\Documents\ChatGPT\msgviewer\dist\MsgViewer.exe";
                 FileInfo fi = new FileInfo(exePath);
                 Assert(fi.Exists, "EXE exists");
                 Assert(fi.Length < 8000000, "AC-08: EXE size < 8,000,000 bytes (7~8MB target)");
-                Console.WriteLine("  [PASS] Test 6: EXE Size = {0} bytes ({1:F2} KB / {2:F4} MB) - PASS",
+                Console.WriteLine("  [PASS] Test 7: EXE Size = {0} bytes ({1:F2} KB / {2:F4} MB) - PASS",
                     fi.Length, fi.Length / 1024.0, fi.Length / (1024.0 * 1024.0));
                 passed++;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("  [FAIL] Test 6: " + ex.Message);
+                Console.WriteLine("  [FAIL] Test 7: " + ex.Message);
                 failed++;
             }
 
