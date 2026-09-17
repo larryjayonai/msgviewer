@@ -1,0 +1,12 @@
+# Temporary test binaries
+tests/*.exe
+
+# Visual Studio / compiler temp files
+*.obj
+*.pdb
+*.suo
+*.user
+
+# Windows thumbnails
+Thumbs.db
+Desktop.ini
